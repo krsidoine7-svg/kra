@@ -1,0 +1,140 @@
+@import "tailwindcss";
+
+/*
+ * DESIGN SYSTEM MANU KRA — Architecture 3 couches (Primitive -> Semantic -> Component)
+ * Palette : Monochrome Noir & Blanc éditorial (#F7F5F2 / #FFFFFF / #111111 / #0A0A0A)
+ */
+
+:root {
+  /* Couche 1 : Primitives */
+  --p-white: #ffffff;
+  --p-bone: #f7f5f2;
+  --p-paper: #f2efea;
+  --p-gray-100: #f4f4f4;
+  --p-gray-200: #eaeaea;
+  --p-gray-300: #d4d4d4;
+  --p-gray-500: #6b6b6b;
+  --p-gray-600: #525252;
+  --p-ink: #111111;
+  --p-black: #0a0a0a;
+
+  /* 3e couleur psychologique (Communication & Économie : Bleu Marine & Blanc) */
+  --p-accent: #0f2942;
+  --p-accent-hover: #183d61;
+  --p-accent-soft: #ebf1f7;
+  --p-accent-soft-fg: #0f2942;
+  --p-accent-border: #c5d6e6;
+  --p-accent-dark-fg: #9ccbe3;
+
+  /* Statuts sémantiques sobres (Dashboard Linear uniquement) */
+  --p-green-bg: #dcfae5;
+  --p-green-fg: #1f5e3b;
+  --p-amber-bg: #fffbeb;
+  --p-amber-fg: #92400e;
+  --p-red-bg: #ffedea;
+  --p-red-fg: #9f2f2d;
+
+  /* Couche 2 : Sémantiques Vitrine (Noir pour texte uniquement, Bleu Marine & Blanc pour surfaces) */
+  --bg-canvas: var(--p-white);
+  --bg-surface: var(--p-white);
+  --bg-inverse: var(--p-accent);
+  --fg-primary: var(--p-ink);
+  --fg-secondary: var(--p-gray-600);
+  --fg-muted: var(--p-gray-500);
+  --fg-inverse: var(--p-white);
+  --border-subtle: #e2e8f0;
+  --border-strong: #c5d6e6;
+  --accent-primary: var(--p-accent);
+  --accent-hover: var(--p-accent-hover);
+  --accent-soft: var(--p-accent-soft);
+  --accent-soft-fg: var(--p-accent-soft-fg);
+  --accent-border: var(--p-accent-border);
+  --accent-dark-fg: var(--p-accent-dark-fg);
+
+  /* Couche 2 : Sémantiques Dashboard Linear */
+  --dash-ground: #f9fafb;
+  --dash-surface: #ffffff;
+  --dash-sidebar: #f7f7f8;
+  --dash-active: #ededed;
+  --dash-border: #e8e8e8;
+  --dash-text: #111111;
+  --dash-muted: #5f6368;
+
+  /* Couche 3 : Composants */
+  --btn-primary-bg: var(--p-accent);
+  --btn-primary-fg: var(--p-white);
+  --btn-radius: 4px;
+  --card-border: 1px solid var(--border-subtle);
+  --card-radius: 8px;
+
+  /* Typographie (polices self-hosted via @fontsource pour 3G & offline) */
+  --font-display: "Space Grotesk", "Helvetica Neue", system-ui, sans-serif;
+  --font-serif: "Instrument Serif", Georgia, serif;
+  --font-sans: "Plus Jakarta Sans", "Helvetica Neue", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+
+  /* Courbes & Temps d'animation */
+  --ease-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in-out: cubic-bezier(0.76, 0, 0.24, 1);
+  --t-hover: 180ms;
+  --t-ui: 240ms;
+  --t-reveal: 800ms;
+}
+
+:root[data-theme="dark"] {
+  --dash-ground: #0a0a0a;
+  --dash-surface: #111111;
+  --dash-sidebar: #0e0e0e;
+  --dash-active: #222222;
+  --dash-border: #262626;
+  --dash-text: #ffffff;
+  --dash-muted: #a3a3a3;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--bg-canvas);
+    color: var(--fg-primary);
+    font-family: var(--font-sans), "Helvetica Neue", system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+}
+
+.font-display {
+  font-family: var(--font-display), "Helvetica Neue", system-ui, sans-serif;
+}
+
+.font-editorial {
+  font-family: var(--font-serif), Georgia, serif;
+}
+
+.font-mono-tech {
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-variant-numeric: tabular-nums;
+}
+
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
